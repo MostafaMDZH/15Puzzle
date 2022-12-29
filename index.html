@@ -20,10 +20,25 @@
     <link rel="stylesheet" href="/stylesheets/index.css">
     <link rel="stylesheet" href="/stylesheets/app.css">
     <link rel="stylesheet" href="/stylesheets/app.responsive.css">
-    <script src="app.js" defer></script>
+    <script type="module" src="app.js" defer></script>
     
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this game.</noscript>
+    <div id="page">
+
+        <!-- header -->
+        <header class="header">
+            <h1 class="title">15 Puzzle</h1>
+            <div id="menu">
+              <input type="button" id="reset" value="Reset"/>
+              <input type="button" id="solve" value="Solve"/>
+            </div>
+        </header>
+
+        <!-- playground -->
+        <div id="window"></div>
+        
+    </div>
   </body>
 </html>
