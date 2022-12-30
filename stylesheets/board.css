@@ -1,0 +1,62 @@
+/* board */
+.Board{
+    padding: .3rem;
+    background-color: #a4c9ff;
+    border-radius: 1.1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+/* header */
+.Board > #header{
+    width: 100%;
+    height: 4rem;
+    padding-left: .7rem;
+    padding-right: .3rem;
+    background-color: #a4c9ff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.Board > #header > #closeButton{
+    width: 3.3rem;
+    height: 3.3rem;
+    border-radius: 0.5rem;
+    background: transparent url(/assets/close.svg) no-repeat top .6rem left .5rem / 2.2rem auto;
+}
+.Board > #header > #closeButton:hover,
+.Board > #header > #closeButton:focus{
+    background-color: rgba(255,255,255,0.4);
+}
+
+/* content */
+.Board > #content{
+    position: relative;
+}
+.Board > #content > #tileWrapper{
+    width: 100%;
+    background-color: #663399;
+    border: solid .4rem #663399;
+    border-top-left-radius: .6rem;
+    border-top-right-radius: .6rem;
+    border-bottom-left-radius: 1.1rem;
+    border-bottom-right-radius: 1.1rem;
+    position: relative;
+    overflow: hidden;
+}
+.Board > #content > #touchSurface{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.3);
+    border-top-left-radius: .6rem;
+    border-top-right-radius: .6rem;
+    border-bottom-left-radius: 1.1rem;
+    border-bottom-right-radius: 1.1rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.Board > #content > #touchSurface:focus,
+.Board > #content > #touchSurface:hover{
+    background-color: transparent;
+}
