@@ -18,9 +18,9 @@ export default class Board{
 
         //init elements:
         this.view = document.getElementById(this.id + '');
-        this.tileContainer   = this.view.querySelectorAll('#tileContainer'  )[0];
-        this.touchSurface = this.view.querySelectorAll('#touchSurface')[0];
-        this.closeButton  = this.view.querySelectorAll('#closeButton' )[0];
+        this.tileContainer = this.view.querySelectorAll('#tileContainer')[0];
+        this.touchSurface  = this.view.querySelectorAll('#touchSurface' )[0];
+        this.closeButton   = this.view.querySelectorAll('#closeButton'  )[0];
 
         //set size:
         this.setTileContainerSize(tileWidth, tileHeight);
@@ -109,6 +109,10 @@ export default class Board{
             this.move(e.key.replace('Arrow', ''));
             this.checkForWining();
         });
+        this.addEventToSwipe(this.touchSurface, direction => {
+            this.move(direction);
+            this.checkForWining();
+        });
         this.closeButton.addEventListener('click', () => {
             this.view.style.display = 'none';
         });
@@ -181,6 +185,54 @@ export default class Board{
         setTimeout(() => {
             alert(`Congratulations!! You Win The Board ${this.row} x ${this.column} !!`);
         }, 400);
+    }
+
+    //addEventToSwipe:
+    addEventToSwipe = (touchSurface, onSwipe) => {
+        
+        let swipeDetection = { startX: 0, startY: 0, endX: 0, endY: 0 };
+        let minX = 30; //min x swipe for horizontal swipe
+        let maxX = 30; //max x difference for vertical swipe
+        let minY = 50; //min y swipe for vertical swipe
+        let maxY = 60; //max y difference for horizontal swipe
+        let direction = '';
+        
+        //events:
+        touchSurface.addEventListener('touchstart', e => {
+            let touch = e.touches[0];
+            swipeDetection.startX = touch.screenX;
+            swipeDetection.startY = touch.screenY;
+        });
+        touchSurface.addEventListener('touchmove', e => {
+            e.preventDefault();
+            let touch = e.touches[0];
+            swipeDetection.endX = touch.screenX;
+            swipeDetection.endY = touch.screenY;
+        });
+        touchSurface.addEventListener('touchend', e => {
+            //horizontal detection:
+            if(
+                (((swipeDetection.endX - minX > swipeDetection.startX) || (swipeDetection.endX + minX < swipeDetection.startX)) &&
+                 ((swipeDetection.endY < swipeDetection.startY + maxY) && (swipeDetection.startY > swipeDetection.endY - maxY)  &&
+                  (swipeDetection.endX > 0)))){
+                if(swipeDetection.endX > swipeDetection.startX)
+                    direction = 'Right'; else direction = 'Left';
+            }
+            //vertical detection:
+            else if(
+                (((swipeDetection.endY - minY > swipeDetection.startY) || (swipeDetection.endY + minY < swipeDetection.startY)) &&
+                 ((swipeDetection.endX < swipeDetection.startX + maxX) && (swipeDetection.startX > swipeDetection.endX - maxX)  &&
+                  (swipeDetection.endY > 0)))){
+                if(swipeDetection.endY > swipeDetection.startY)
+                    direction = 'Down'; else direction = 'Up';
+            }
+
+            //run the callback:
+            if(direction !== '')
+                onSwipe(direction);
+            swipeDetection = { startX: 0, startY: 0, endX: 0, endY: 0 };
+            direction = '';;
+        });
     }
 
 }
