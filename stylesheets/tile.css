@@ -1,0 +1,25 @@
+/* tile */
+.Tile{
+    border: solid .4rem #663399;
+    border-radius: 1.1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    background-color: #f0a7a7;
+    transition-duration: 300ms;
+}
+.Tile::after{
+    content: attr(data-number);
+    color: #333;
+    font-size: 2.1rem;
+}
+
+/* blank tile */
+.blankTile{
+    background-color: transparent;
+    border-color: transparent;
+}
+.blankTile::after{
+    content: "";
+}
