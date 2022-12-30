@@ -16,10 +16,14 @@
     <meta name="msapplication-navbutton-color" content="#ffffff">
     <meta name="apple-mobile-web-app-status-bar-style" content="#ffffff">
 
-    <!-- src -->
+    <!-- css -->
     <link rel="stylesheet" href="/stylesheets/index.css">
     <link rel="stylesheet" href="/stylesheets/app.css">
-    <link rel="stylesheet" href="/stylesheets/app.responsive.css">
+    <link rel="stylesheet" href="/stylesheets/header.css">
+    <link rel="stylesheet" href="/stylesheets/board.css">
+    <link rel="stylesheet" href="/stylesheets/tile.css">
+
+    <!-- js -->
     <script type="module" src="app.js" defer></script>
     
   </head>
@@ -28,16 +32,61 @@
     <div id="page">
 
         <!-- header -->
-        <header class="header">
-            <h1 class="title">15 Puzzle</h1>
-            <div id="menu">
-              <input type="button" id="reset" value="Reset"/>
-              <input type="button" id="solve" value="Solve"/>
+        <header id="Header">
+
+            <div id="topSection">
+              <h1 class="title">15 Puzzle</h1>
+              <input type="button" id="showFormButton" title="Add Board"/>
             </div>
+            
+            <!-- form -->
+            <div id="form">
+
+              <div class="formInfo">
+                <a class="formLabel">Board:</a>
+                <div class="inputWrapper">
+                  <a class="inputLabel">row:</a>
+                  <input type="number" class="inputField" id="rowInput" value="5"/>
+                </div>
+                <div class="inputWrapper">
+                  <a class="inputLabel">column:</a>
+                  <input type="number" class="inputField" id="columnInput" value="7"/>
+                </div>
+              </div>
+
+              <div class="formInfo">
+                <a class="formLabel">Tile:</a>
+                <div class="inputWrapper">
+                  <a class="inputLabel">w(px):</a>
+                  <input type="number" class="inputField" id="widthInput" value="70"/>
+                </div>
+                <div class="inputWrapper">
+                  <a class="inputLabel">h(px):</a>
+                  <input type="number" class="inputField" id="heightInput" value="60"/>
+                </div>
+              </div>
+
+              <div class="formInfo">
+                <a class="formLabel">Difficulty:</a>
+                <div class="inputWrapper">
+                  <select id="difficultyInput">
+                    <option value="5">Easy</option>
+                    <option selected="selected" value="10">Medium</option>
+                    <option value="15">Hard</option>
+                  </select>
+                </div>
+              </div>
+              
+              <input type="button" id="addBoardButton" value="Add Board"/>
+
+            </div>
+
         </header>
 
-        <!-- playground -->
-        <div id="window"></div>
+        <!-- tileContainer -->
+        <div id="contentWrapper" class="darkThinScrollbar">
+          <div id="playground"></div>
+        </div>
         
     </div>
   </body>
