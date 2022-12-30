@@ -48,7 +48,7 @@
     padding: 0 .8rem 0 1.2rem;
     border-radius: .5rem;
     border: none;
-    background-color: #51297B;
+    background-color: #412162;
     display: flex;
     align-items: center;
     gap: .5rem;
@@ -71,7 +71,7 @@
     height: 3.5rem;
     padding-right: .2rem;
     border-radius: .5rem;
-    background-color: #51297B;
+    background-color: #412162;
     color: #ddd;
 }
 #form > #addBoardButton{
