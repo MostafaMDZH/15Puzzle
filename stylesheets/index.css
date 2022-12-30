@@ -24,6 +24,7 @@ body * {
   -webkit-tap-highlight-color: transparent;
   box-sizing: border-box;
   font-family: Ubuntu_Regular, serif;
+  transition: all 200ms ease-in-out;
 }
 body a, body p, body input, body button, body select {
   font-size: 1.5rem;
