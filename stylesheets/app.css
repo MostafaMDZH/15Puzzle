@@ -1,0 +1,49 @@
+/* page */
+#page{
+    width: 100%;
+    height: 100%;
+    background-color: #663399;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#contentWrapper{
+    max-width: 100%;
+    flex: 1;
+    overflow: auto;
+}
+#contentWrapper > #playground{
+    width: fit-content;
+    min-width: 100%;
+    min-height: 100%;
+    padding: 1.5rem 2rem;
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+}
+
+/* custom scrollbar */
+.darkThinScrollbar::-webkit-scrollbar{
+    width: .6rem;
+    height: .4rem;
+}
+.darkThinScrollbar::-webkit-scrollbar-corner{
+    background: transparent;
+}
+.darkThinScrollbar::-webkit-scrollbar-track{
+    background: transparent;
+}
+.darkThinScrollbar::-webkit-scrollbar-thumb{
+    background: #a4c9ff;
+    border-radius: 2rem;
+}
+
+/* responsive design */
+@media screen and (orientation: portrait) {
+
+    #contentWrapper > #playground{
+        flex-direction: column;
+        justify-content: center;
+    }
+    
+}
